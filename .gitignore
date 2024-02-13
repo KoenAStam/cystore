@@ -1,0 +1,8 @@
+# Specific data files
+*.fcs
+*.wsp
+
+# Other
+.Rproj.user/
+.Rhistory
+.RDataTmp

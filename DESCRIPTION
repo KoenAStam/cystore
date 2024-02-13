@@ -1,0 +1,13 @@
+Package: CyStore
+Type: Package
+Title: Storage tools for Cytometry data
+Version: 0.5.0
+Author: K.A. Stam
+Maintainer: K.A. Stam <k.a.stam@lumc.nl>
+Description: Package that contains a variety of functions to harmonize and store cytometric data.
+Depends: R (>= 4.2.2)
+Imports: XML
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
