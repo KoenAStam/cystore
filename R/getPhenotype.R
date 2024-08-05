@@ -25,19 +25,8 @@
 #'
 #' @details I'll explain the algorithm later
 #'
-#' @import cytofast
-#'
 #' @keywords phenotype, markers, labels
 #'
-#' @examples
-#' library(CyStore)
-#'
-#' dirFCS <- system.file("extdata", package="cytofast")
-#' cfData <- cytofast::readCytosploreFCS(dir = dirFCS, colNames = "description")
-#' useCol <- setdiff(colnames(cfData@expr), c("Time", "Event_length", "CSPLR_HsneDataX", "CSPLR_HsneDataY"))
-#' cfData@expr <- cfData@expr[,useCol]
-#'
-#' phenotype <- getPhenotype(cfData)
 #'
 #'
 #' @export

@@ -33,18 +33,6 @@ returns a list with three elements `$phenotype_table`, `$marker_bins` and
 \details{
 I'll explain the algorithm later
 }
-\examples{
-library(CyStore)
-
-dirFCS <- system.file("extdata", package="cytofast")
-cfData <- cytofast::readCytosploreFCS(dir = dirFCS, colNames = "description")
-useCol <- setdiff(colnames(cfData@expr), c("Time", "Event_length", "CSPLR_HsneDataX", "CSPLR_HsneDataY"))
-cfData@expr <- cfData@expr[,useCol]
-
-phenotype <- getPhenotype(cfData)
-
-
-}
 \keyword{labels}
 \keyword{markers,}
 \keyword{phenotype,}
