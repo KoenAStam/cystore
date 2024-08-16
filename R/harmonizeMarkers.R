@@ -25,7 +25,7 @@ harmonizeMarkers <- function(markers){
 
         # No perfect match, check CD* in label
         if(is.na(m)){
-            if(grepl("CD[[:alnum:]]{1,7}", markers[i])){
+            if(grepl("CD[[:alnum:]]{1,7}", markers[i]) & !grepl(";", markers[i])){ # we skip markers with ;, because they could be double
                 r <- regmatches(markers[i], regexpr("CD[[:alnum:]]{1,7}", markers[i]))
                 m <- match(r, HGNC$cd)
             }
@@ -41,6 +41,18 @@ harmonizeMarkers <- function(markers){
         ## Second, match to HGNC symbol
         message("-> HGNC (symbol) ", appendLF=FALSE)
         m2 <- match(toupper(markers[i]), toupper(HGNC$symbol))
+
+        # Check match if we remove special characters (IL-5 -> IL5)
+        if(is.na(m2)){
+          m2 <- match(toupper(gsub("[^a-zA-Z0-9\\s]", "", markers[i])), toupper(HGNC$symbol))
+        }
+
+        # Check for B2M (barcodes)
+        if(grepl("B2M", markers[i]) & !grepl("B2MR", markers[i]) & !grepl("TFB2M", markers[i])){
+          new_markers[i] <- "B2M"
+          message("-> ", new_markers[i], "\n", appendLF = FALSE)
+          next
+        }
 
         if(!is.na(m2)){
             # add CD label if able else HGNC symbol
